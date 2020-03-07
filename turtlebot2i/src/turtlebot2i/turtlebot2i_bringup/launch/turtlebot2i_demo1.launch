@@ -2,11 +2,12 @@
 <launch>
   
   <arg name="new_rtabmap" default="false"/>
-  <arg name="localization" default="false"/>
-  <arg name="rviz" default="false"/>
-  <arg name="rtabmapviz" default="false"/>
+  <arg name="localization" default="true"/>
+  <arg name="rviz" default="true"/>
+  <arg name="rtabmapviz" default="true"/>
 
   <include file="$(find turtlebot2i_bringup)/launch/minimal.launch"/>
+	<arg name="simulation" value="true"/>
 
   <include file="$(find turtlebot2i_bringup)/launch/arms/phantomx_pincher_arm.launch"/>
 
