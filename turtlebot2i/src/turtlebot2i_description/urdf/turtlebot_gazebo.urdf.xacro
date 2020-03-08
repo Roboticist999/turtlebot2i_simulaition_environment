@@ -4,7 +4,8 @@
     <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
         <robotNamespace>/turtlebot</robotNamespace>
         <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-	<legacyModeNS>true</legacyModeNS>
+        <legacyModeNS>true</legacyModeNS>
+
     </plugin>
   </gazebo>
 
