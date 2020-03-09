@@ -60,6 +60,7 @@ class ArbotixROS(ArbotiX):
         baud = int(rospy.get_param("~baud", "115200"))
 
         self.rate = rospy.get_param("~rate", 100.0)
+        rospy.set_param('~sim', True)
         self.fake = rospy.get_param("~sim", False)
 
         self.use_sync_read = rospy.get_param("~sync_read",True)      # use sync read?
