@@ -1,7 +1,7 @@
 <launch>
 
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
-  <arg name="paused" default="false"/>
+  <arg name="paused" default="true"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
@@ -21,7 +21,7 @@
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <!--<arg name="world_name" value="$(arg world_file)"/>-->
-    <arg name="world_name" value="$(find turtlebot2i_gazebo)/worlds/test2.world"/>
+    <arg name="world_name" value="$(find turtlebot2i_gazebo)/worlds/test5.world"/>
     <arg name="debug" value="$(arg debug)" />
     <arg name="gui" value="$(arg gui)" />
     <arg name="paused" value="$(arg paused)"/>
@@ -51,9 +51,9 @@
   <!-- Fake laser -->
 <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
     <param name="scan_height" value="10"/>
-    <param name="output_frame_id" value="/camera_depth_frame"/>
+    <param name="output_frame_id" value="/camera_sr300_depth_frame"/>
     <param name="range_min" value="0.45"/>
-    <remap from="image" to="/camera/depth/image_raw"/>
+    <remap from="image" to="/camera_sr300/depth/image_raw"/>
     <remap from="scan" to="/scan"/>
 </node>
 
