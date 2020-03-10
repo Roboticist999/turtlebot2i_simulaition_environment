@@ -4,9 +4,11 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /RobotModel1/Status1
+        - /Image2
         - /PlanningScene1/Scene Geometry1
       Splitter Ratio: 0.401459992
-    Tree Height: 341
+    Tree Height: 315
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -14,6 +16,8 @@ Panels:
       - /Current View1
     Name: Views
     Splitter Ratio: 0.5
+Toolbars:
+  toolButtonStyle: 2
 Visualization Manager:
   Class: ""
   Displays:
@@ -383,10 +387,6 @@ Visualization Manager:
           Value: true
         gripper_active2_link:
           Value: true
-        gripper_active_link:
-          Value: true
-        gripper_link:
-          Value: true
         gyro_link:
           Value: true
         map:
@@ -455,10 +455,6 @@ Visualization Manager:
           Value: true
         standoff_50mm_9_link:
           Value: true
-        wheel_left_link:
-          Value: true
-        wheel_right_link:
-          Value: true
       Marker Scale: 0.100000001
       Name: TF
       Show Arrows: true
@@ -475,10 +471,6 @@ Visualization Manager:
                       arm_forearm_link:
                         arm_wrist_flex_link:
                           gripper_active2_link:
-                            {}
-                          gripper_active_link:
-                            {}
-                          gripper_link:
                             {}
                 camera_rgb_frame:
                   camera_depth_frame:
@@ -569,10 +561,6 @@ Visualization Manager:
                   {}
                 standoff_50mm_9_link:
                   {}
-                wheel_left_link:
-                  {}
-                wheel_right_link:
-                  {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -585,6 +573,7 @@ Visualization Manager:
       Channel Name: intensity
       Class: rtabmap_ros/MapCloud
       Cloud decimation: 4
+      Cloud from scan: false
       Cloud max depth (m): 4
       Cloud min depth (m): 0
       Cloud voxel size (m): 0.00999999978
@@ -686,7 +675,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /camera_sr300/rgb/image_rect_color
+      Image Topic: /camera_sr300/rgb/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -721,7 +710,7 @@ Visualization Manager:
       Marker Topic: /zone_visualization_marker
       Name: MarkerArray
       Namespaces:
-        turtlebot_zones: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -729,7 +718,7 @@ Visualization Manager:
       Marker Topic: /zone_destination_marker
       Name: MarkerArray
       Namespaces:
-        turtlebot_destinations: true
+        {}
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -1140,6 +1129,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
+    Default Light: true
     Fixed Frame: map
     Frame Rate: 30
   Name: root
@@ -1170,24 +1160,24 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.225398153
+      Pitch: 0.15539816
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 2.38728571
+      Yaw: 2.42728567
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 962
+  Height: 905
   Help:
     collapsed: false
   Hide Left Dock: false
   Hide Right Dock: true
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000001730000037cfc0200000008fb000000100044006900730070006c006100790073010000002800000196000000dd00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000001d8000000bc000000b000fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000001f4000001cc0000000000000000fb0000000a0049006d00610067006501000001c4000000f80000001600fffffffb0000000a0049006d00610067006501000002c2000000e20000001600fffffffb0000000a0049006d00610067006501000002a7000000fd0000000000000000000005b00000037c00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000001000000000000017300000343fc0200000008fb000000100044006900730070006c00610079007301000000280000017c000000d700fffffffb0000000800480065006c00700000000342000000bb0000007300fffffffb0000000a0056006900650077007300000001d8000000bc000000ad00fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000001f4000001cc0000000000000000fb0000000a0049006d00610067006501000001aa000000e80000001600fffffffb0000000a0049006d0061006700650100000298000000d30000001600fffffffb0000000a0049006d00610067006501000002a7000000fd0000000000000000000004ff0000034300000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 1833
+  Width: 1656
   X: 65
   Y: 24

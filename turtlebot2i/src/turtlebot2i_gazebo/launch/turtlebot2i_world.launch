@@ -1,11 +1,15 @@
 <launch>
 
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
-  <arg name="paused" default="true"/>
+  <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
+  <arg name="new_rtabmap" default="true"/>
+  <arg name="localization" default="false"/>
+  <arg name="rviz" default="true"/>
+  <arg name="rtabmapviz" default="true"/>
 
   <arg name="base"      value="$(optenv TURTLEBOT_BASE kobuki)"/> <!-- create, roomba -->
   <arg name="stacks"    value="$(optenv TURTLEBOT_STACKS hexagons)"/>  <!-- circles, hexagons --> 
@@ -53,7 +57,14 @@
     <remap from="scan" to="/scan"/>
 </node>
 
+  <!-- launch rtabmap -->
+  <include file="$(find turtlebot2i_bringup)/launch/rtabmap.launch">
+    <arg if="$(arg new_rtabmap)" name="args" value="--delete_db_on_start"/>
+    <arg name="localization" value="$(arg localization)"/>
+    <arg name="rtabmapviz" value="$(arg rtabmapviz)"/>
+  </include>
+
   <!-- Rviz Configuration -->
-  <include if="$(arg rviz)" file="$(find turtlebot2i_bringup)/launch/rviz.launch"/>
+  <include if="true" file="$(find turtlebot2i_bringup)/launch/rviz.launch"/>
 
 </launch>
