@@ -1,4 +1,6 @@
 # turtlebot2i_simulaition_environment
+-2. If you want to configure the simulation environment by yourself. I created a log file named v1.0 turtlebot2i simulation environment set up.pdf. It might be helpful.
+-1. Before you download and use the simulation environment, follow the steps I marked as green in Full Build Instructions · Interbotix_turtlebot2i Wiki.pdf. They are basically ROS and ROS packages installation and ~/.bashrc modification, etc. Don't do steps I marked as yellow, as those packages have been downloaded in the simulation environment.
 0. You may need to copy turtlebot2i directory to your ~/ directory, and enter turtlebot2i directory, then catkin make
 1. In order to use this environment, type roslaunch turtlebot2i_gazebo turtlebot2i_world.launch in terminal. In this case you will use the cafe world, if you want to use another world file, modify turtlebot2i_world.launch to use that file
 2. There will be tons of errors and warnings, and GUI seem to die, but I think they don't matter as I'm running lots of nodes using this launch file and it may due to the limit of computation speed. The program will repeat operations with error. After Gazebo recovers, click the rectangle at bottom left of Gazebo to resume it.
