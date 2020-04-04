@@ -5,12 +5,22 @@
 
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" ns="/turtlebot" args="arm_shoulder_pan_position_controller arm_shoulder_lift_position_controller arm_elbow_flex_position_controller arm_wrist_flex_position_controller joint_state_controller"/>
+    output="screen" ns="/turtlebot" args="arm_shoulder_pan_position_controller arm_shoulder_lift_position_controller arm_elbow_flex_position_controller arm_wrist_flex_position_controller joint_state_controller gripper1_position_controller gripper2_position_controller"/>
 
   <!-- convert joint states to TF transforms for rviz, etc -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
     respawn="false" output="screen">
+    <param name="publish_frequency" type="double" value="5.0" />
     <remap from="/joint_states" to="/turtlebot/joint_states" />
   </node>
 
+  <!--<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+     <param name="use_gui" value="true"/>
+    <param name="publish_frequency" type="double" value="5.0" />
+  </node>-->
+
+  <!--fake gripper publisher-->
+  <!--node name="fake_joint_pub" pkg="phantomx_pincher_arm_bringup" type="fake_joint_pub.py">
+   <remap from="/joint_states" to="/turtlebot/joint_states" />
+  </node-->
 </launch>

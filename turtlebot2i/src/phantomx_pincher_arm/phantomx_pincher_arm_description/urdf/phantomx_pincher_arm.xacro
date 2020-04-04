@@ -17,7 +17,7 @@
     <transmission name="arm_shoulder_pan_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="arm_shoulder_pan_joint">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="arm_shoulder_pan_actuator">
         <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -34,7 +34,7 @@
     <transmission name="arm_bicep_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="arm_bicep_joint">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="arm_bicep_actuator">
         <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -51,7 +51,7 @@
     <transmission name="arm_forearm_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="arm_forearm_joint">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="arm_forearm_actuator">
         <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -67,7 +67,7 @@
     <transmission name="arm_wrist_flex_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="arm_wrist_flex_joint">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="arm_wrist_flex_actuator">
         <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -79,7 +79,7 @@
   <xacro:include filename="$(find phantomx_pincher_arm_description)/urdf/phantomx_pincher_gripper.xacro"/>
 
 <!-- gripper_link -->
-    <link name="gripper_link"/>
+    <!--link name="gripper_link"/>
     <joint name="gripper_link_joint" type="revolute">
       <origin xyz="0.110 0 0" rpy="0 0 0"/>
       <parent link="arm_wrist_flex_link"/>
@@ -87,6 +87,22 @@
       <limit effort="6" velocity="1" lower="-3.14" upper="3.14"/>
       <axis xyz="1 0 0"/>
     </joint>
+
+    <transmission name="gripper_link_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="gripper_link_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="gripper_link_actuator">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <gazebo reference="gripper_link">
+      <material>Gazebo/${color}</material>
+      <gravity>true</gravity>
+    </gazebo-->
   <!--gazebo>
       <gripper name="gripper">
         <grasp_check>

@@ -69,7 +69,7 @@
       <param name="Reg/Force3DoF"               type="string" value="true"/>
       <param name="Vis/InlierDistance"          type="string" value="0.05"/>
       
-      <remap from="rgb/image"       to="/camera/rgb/image_rect_color"/>
+      <remap from="rgb/image"       to="/camera_sr300/rgb/image_raw"/>
       <remap from="depth/image"     to="/camera_sr300/depth/image_raw"/>
       <remap from="rgb/camera_info" to="/camera_sr300/rgb/camera_info"/>
     </node>
@@ -81,7 +81,7 @@
       <param name="frame_id"                    type="string" value="base_footprint"/>
       <param name="wait_for_transform_duration" type="double" value="$(arg wait_for_transform)"/>
     
-      <remap from="rgb/image"       to="/camera/rgb/image_rect_color"/>
+      <remap from="rgb/image"       to="/camera_sr300/rgb/image_raw"/>
       <!--
     <remap if="$(eval arg('3d_sensor') != 'zr300')" from="depth/image" to="/camera/depth_registered/image_raw"/>
     <remap if="$(eval arg('3d_sensor') == 'zr300')" from="depth/image" to="/camera/depth/image_raw"/>-->
