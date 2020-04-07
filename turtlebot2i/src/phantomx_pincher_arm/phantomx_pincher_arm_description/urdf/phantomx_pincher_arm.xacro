@@ -17,10 +17,10 @@
     <transmission name="arm_shoulder_pan_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="arm_shoulder_pan_joint">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="arm_shoulder_pan_actuator">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
@@ -34,10 +34,10 @@
     <transmission name="arm_bicep_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="arm_bicep_joint">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="arm_bicep_actuator">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
@@ -51,10 +51,10 @@
     <transmission name="arm_forearm_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="arm_forearm_joint">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="arm_forearm_actuator">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
@@ -67,10 +67,10 @@
     <transmission name="arm_wrist_flex_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="arm_wrist_flex_joint">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="arm_wrist_flex_actuator">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>

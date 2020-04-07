@@ -20,6 +20,8 @@
   <run_depend>rrbot_control</run_depend>
   <run_depend>rrbot_description</run_depend>
   <run_depend>xacro</run_depend>
+  <run_depend>nodelet</run_depend>
+
 
   <export>
   </export>
