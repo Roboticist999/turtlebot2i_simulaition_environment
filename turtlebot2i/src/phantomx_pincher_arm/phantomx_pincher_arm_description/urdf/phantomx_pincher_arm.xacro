@@ -79,7 +79,7 @@
   <xacro:include filename="$(find phantomx_pincher_arm_description)/urdf/phantomx_pincher_gripper.xacro"/>
 
 <!-- gripper_link -->
-    <!--link name="gripper_link"/>
+    <link name="gripper_link"/>
     <joint name="gripper_link_joint" type="revolute">
       <origin xyz="0.110 0 0" rpy="0 0 0"/>
       <parent link="arm_wrist_flex_link"/>
@@ -88,7 +88,7 @@
       <axis xyz="1 0 0"/>
     </joint>
 
-    <transmission name="gripper_link_transmission">
+    <!--transmission name="gripper_link_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="gripper_link_joint">
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
