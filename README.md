@@ -9,7 +9,7 @@ sudo apt-get install ros-kinetic-gazebo-ros-pkgs ros-kinetic-gazebo-ros-control
 
 5.1 In order to use this environment, type "roslaunch turtlebot2i_gazebo turtlebot2i_world2.launch" in terminal. In this case you will use the cafe world, if you want to use another world file, modify turtlebot2i_world.launch to use that file
 
-5.2 Run "roslaunch turtlebot2i_bringup rviz.launch" in a new terminal to start Rviz
+5.2 Run "roslaunch turtlebot2i_bringup rviz.launch" in a new terminal to start Rviz. If the Rviz model is not correctly matching the transforms, change the Rviz global Fixed Frame to be 'odom'.
 
 5.3 Run "roslaunch turtlebot2i_bringup rtabmap.launch args:=--delete_db_on_start" in a new terminal to start building a new map. My rtablap.launch still has issues, which is camera image turns red as demonstrated at the end of "v1.2 turtlebot2i simulation environment set up.pdf"
 

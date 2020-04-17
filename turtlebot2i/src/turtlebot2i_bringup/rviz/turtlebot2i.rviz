@@ -4,7 +4,7 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /RobotModel1/Status1
+        - /Global Options1
         - /Image2
         - /PlanningScene1/Scene Geometry1
       Splitter Ratio: 0.401459992
@@ -157,10 +157,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        gripper_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         gyro_link:
           Alpha: 1
           Show Axes: false
@@ -387,9 +383,9 @@ Visualization Manager:
           Value: true
         gripper_active2_link:
           Value: true
-        gyro_link:
+        gripper_active_link:
           Value: true
-        map:
+        gyro_link:
           Value: true
         odom:
           Value: true
@@ -461,106 +457,107 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          odom:
-            base_footprint:
-              base_link:
-                arm_base_link:
-                  arm_shoulder_pan_link:
-                    arm_bicep_link:
-                      arm_forearm_link:
-                        arm_wrist_flex_link:
-                          gripper_active2_link:
-                            {}
-                camera_rgb_frame:
-                  camera_depth_frame:
-                    camera_depth_optical_frame:
-                      {}
-                  camera_link:
+        odom:
+          base_footprint:
+            base_link:
+              arm_base_link:
+                arm_shoulder_pan_link:
+                  arm_bicep_link:
+                    arm_forearm_link:
+                      arm_wrist_flex_link:
+                        gripper_active2_link:
+                          {}
+                        gripper_active_link:
+                          {}
+              camera_rgb_frame:
+                camera_depth_frame:
+                  camera_depth_optical_frame:
                     {}
-                  camera_rgb_optical_frame:
-                    {}
-                camera_sr300:
-                  camera_sr300_rgb_frame:
-                    camera_sr300_depth_frame:
-                      camera_sr300_depth_optical_frame:
-                        {}
-                    camera_sr300_rgb_optical_frame:
+                camera_link:
+                  {}
+                camera_rgb_optical_frame:
+                  {}
+              camera_sr300:
+                camera_sr300_rgb_frame:
+                  camera_sr300_depth_frame:
+                    camera_sr300_depth_optical_frame:
                       {}
-                caster_back_link:
-                  {}
-                caster_front_link:
-                  {}
-                cliff_sensor_front_link:
-                  {}
-                cliff_sensor_left_link:
-                  {}
-                cliff_sensor_right_link:
-                  {}
-                gyro_link:
-                  {}
-                plate_bottom_link:
-                  {}
-                plate_middle_link:
-                  {}
-                plate_top_link:
-                  {}
-                plate_utility_lower_link:
-                  {}
-                plate_utility_upper_link:
-                  {}
-                standoff_100mm_0_link:
-                  {}
-                standoff_100mm_10_link:
-                  {}
-                standoff_100mm_11_link:
-                  {}
-                standoff_100mm_12_link:
-                  {}
-                standoff_100mm_13_link:
-                  {}
-                standoff_100mm_1_link:
-                  {}
-                standoff_100mm_2_link:
-                  {}
-                standoff_100mm_3_link:
-                  {}
-                standoff_100mm_6_link:
-                  {}
-                standoff_100mm_7_link:
-                  {}
-                standoff_100mm_8_link:
-                  {}
-                standoff_100mm_9_link:
-                  {}
-                standoff_258mm_0_link:
-                  {}
-                standoff_258mm_1_link:
-                  {}
-                standoff_50mm_0_link:
-                  {}
-                standoff_50mm_10_link:
-                  {}
-                standoff_50mm_11_link:
-                  {}
-                standoff_50mm_1_link:
-                  {}
-                standoff_50mm_2_link:
-                  {}
-                standoff_50mm_3_link:
-                  {}
-                standoff_50mm_4_link:
-                  {}
-                standoff_50mm_5_link:
-                  {}
-                standoff_50mm_6_link:
-                  {}
-                standoff_50mm_7_link:
-                  {}
-                standoff_50mm_8_link:
-                  {}
-                standoff_50mm_9_link:
-                  {}
+                  camera_sr300_rgb_optical_frame:
+                    {}
+              caster_back_link:
+                {}
+              caster_front_link:
+                {}
+              cliff_sensor_front_link:
+                {}
+              cliff_sensor_left_link:
+                {}
+              cliff_sensor_right_link:
+                {}
+              gyro_link:
+                {}
+              plate_bottom_link:
+                {}
+              plate_middle_link:
+                {}
+              plate_top_link:
+                {}
+              plate_utility_lower_link:
+                {}
+              plate_utility_upper_link:
+                {}
+              standoff_100mm_0_link:
+                {}
+              standoff_100mm_10_link:
+                {}
+              standoff_100mm_11_link:
+                {}
+              standoff_100mm_12_link:
+                {}
+              standoff_100mm_13_link:
+                {}
+              standoff_100mm_1_link:
+                {}
+              standoff_100mm_2_link:
+                {}
+              standoff_100mm_3_link:
+                {}
+              standoff_100mm_6_link:
+                {}
+              standoff_100mm_7_link:
+                {}
+              standoff_100mm_8_link:
+                {}
+              standoff_100mm_9_link:
+                {}
+              standoff_258mm_0_link:
+                {}
+              standoff_258mm_1_link:
+                {}
+              standoff_50mm_0_link:
+                {}
+              standoff_50mm_10_link:
+                {}
+              standoff_50mm_11_link:
+                {}
+              standoff_50mm_1_link:
+                {}
+              standoff_50mm_2_link:
+                {}
+              standoff_50mm_3_link:
+                {}
+              standoff_50mm_4_link:
+                {}
+              standoff_50mm_5_link:
+                {}
+              standoff_50mm_6_link:
+                {}
+              standoff_50mm_7_link:
+                {}
+              standoff_50mm_8_link:
+                {}
+              standoff_50mm_9_link:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -919,10 +916,6 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          gripper_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           gyro_link:
             Alpha: 1
             Show Axes: false
@@ -1130,7 +1123,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: map
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
