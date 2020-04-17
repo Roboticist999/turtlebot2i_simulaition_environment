@@ -30,6 +30,7 @@ $ source ~/turtlebot2i/devel/setup.bash
 $ pip install pyquaternion
 $ roslaunch turtlebot2i_gazebo turtlebot2i_world2.launch
 $ roslaunch zzc_code amcl_demo.launch map_file:=~/turtlebot2i/src/turtlebot2i_gazebo/cafe1.yaml
+$ roslaunch turtlebot_rviz_launchers view_navigation.launch --screen
 $ sudo chmod +x ~/turtlebot2i/src/zzc_code/navigate_to_goal.py
 $ rosrun zzc_code navigate_to_goal.py
 
