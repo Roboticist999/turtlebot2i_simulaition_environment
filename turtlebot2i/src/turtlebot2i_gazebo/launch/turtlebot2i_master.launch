@@ -1,0 +1,19 @@
+<launch>
+
+    <include file="$(find turtlebot2i_gazebo)/launch/turtlebot2i_world2.launch"/>
+
+    <include file="$(find turtlebot2i_gazebo)/launch/minimal_modified.launch"/>
+
+    <!--include file="$(find turtlebot2i_bringup)/launch/rtabmap.launch">
+        <arg name="localization" value="true"/>
+    </include-->
+    
+    <!--include file="$(find turtlebot2i_bringup)/launch/arms/phantomx_pincher_arm.launch"/-->
+
+
+    <!--include file="$(find turtlebot2i_moveit_config)/launch/turtlebot_moveit.launch"/-->
+
+
+  
+</launch>
+  

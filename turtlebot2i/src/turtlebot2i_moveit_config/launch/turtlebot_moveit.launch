@@ -44,6 +44,6 @@
   </include>
 
   <!-- If database loading was enabled, start mongodb as well -->
-  <include file="$(find turtlebot2i_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)"/>
+  <!--include file="$(find turtlebot2i_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)"/-->
 
 </launch>
