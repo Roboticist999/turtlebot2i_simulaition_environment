@@ -8,7 +8,7 @@
     <include file="$(find turtlebot2i_bringup)/launch/arms/phantomx_pincher_arm.launch"/>
 
 
-    <include file="$(find turtlebot2i_moveit_config)/launch/turtlebot_moveit.launch"/>
+    <include file="$(find turtlebot2i_moveit_config)/launch/moveit_planning_execution.launch"/>
 
 
   

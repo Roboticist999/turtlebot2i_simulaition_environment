@@ -169,24 +169,24 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          camera_f200:
+          camera_sr300:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          camera_f200_depth_frame:
+          camera_sr300_depth_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          camera_f200_depth_optical_frame:
+          camera_sr300_depth_optical_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          camera_f200_rgb_frame:
+          camera_sr300_rgb_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          camera_f200_rgb_optical_frame:
+          camera_sr300_rgb_optical_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -497,24 +497,24 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          camera_f200:
+          camera_sr300:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          camera_f200_depth_frame:
+          camera_sr300_depth_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          camera_f200_depth_optical_frame:
+          camera_sr300_depth_optical_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          camera_f200_rgb_frame:
+          camera_sr300_rgb_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          camera_f200_rgb_optical_frame:
+          camera_sr300_rgb_optical_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -693,11 +693,11 @@ Visualization Manager:
       Channel Name: intensity
       Class: rviz/DepthCloud
       Color: 255; 255; 255
-      Color Image Topic: /camera_f200/rgb/image_raw
+      Color Image Topic: /camera_sr300/rgb/image_raw
       Color Transformer: RGB8
       Color Transport Hint: raw
       Decay Time: 0
-      Depth Map Topic: /camera_f200/depth/image_raw
+      Depth Map Topic: /camera_sr300/depth/image_raw
       Depth Map Transport Hint: raw
       Enabled: false
       Invert Rainbow: false
@@ -788,7 +788,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /camera_f200/rgb/image_raw
+      Image Topic: /camera_sr300/rgb/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -839,7 +839,7 @@ Visualization Manager:
       Size (Pixels): 1
       Size (m): 0.00999999978
       Style: Points
-      Topic: /camera_f200/depth_registered/points
+      Topic: /camera_sr300/depth_registered/points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
