@@ -1,9 +1,13 @@
 #!/usr/bin/env python
 import rospy
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Pose
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import OccupancyGrid
+from move_base_msgs.msg import MoveBaseActionResult, MoveBaseResult, MoveBaseGoal
 from math import pow
+import actionlib
+import roslib
+import numpy as np
 
 
 #check to see any neighbors of a point are free space
@@ -48,9 +52,9 @@ def check_neighbors_for_free_space(occu_grid,row,col):
 def near_point(f,point,threshold):
 
     for f_data in f:
-        if abs(f_data[0] - point[0]) =< threshold:
+        if abs(f_data[0] - point[0]) < 1+threshold:
             return True
-        if abs(f_data[1] - point[1]) =< threshold:
+        if abs(f_data[1] - point[1]) < 1+threshold:
             return True
     return False
 
@@ -65,8 +69,8 @@ def find_frontiers(occu_grid):
     frontiers = []
 
     #iterate through all points, adding them to relevant 
-    for row in height:
-        for col in width:
+    for row in range(height):
+        for col in range(width):
             #check if data point is unknown and has free_space neighhbors
             #means check if considered frontier
             if occu_grid[row][col] == -100 and check_neighbors_for_free_space(occu_grid,row,col):
@@ -83,57 +87,79 @@ def find_frontiers(occu_grid):
 
 #subscribes to map data, then removes itself once it has it
 def map_callback(msg):
+    print('map callback')
     global got_map
     global map_data
     got_map = True
-    global last_got_map = rospy.Time.now()
-    map_data = msg
+
+
+    map_data =  np.array(msg.data).reshape((msg.info.height, msg.info.width))
     if got_map:
         map_sub.unregister()
 
+got_map = False
 #subscribe to map
 def get_map():
-    if got_map is not None and got_map:
+    global got_map
+    if got_map:
         return map_data
     else:
         got_map = False
         start_get_map = rospy.Time.now()
+        global map_sub
         map_sub = rospy.Subscriber('map', OccupancyGrid, map_callback)
         #wait until you get the map or 5 seconds
-        while not got_map and (rospy.Time.now() > start_get_map + 5*1000):
-            rospy.spin()
+        print(start_get_map)
+        while (not got_map) and (rospy.Time.now() < start_get_map + rospy.Duration(5)):
+            print('looking for map')
+            rospy.sleep(1)
         if got_map:
+            print('got map!!')
+            print(map_data)
             return map_data
         else:
             print('could not find map')
-            return Exception
 
 #subscribes to map data, then removes itself once it has it
 def pose_callback(msg):
     global got_pose
     global pose_data
     got_pose = True
-    global last_got_pose = rospy.Time.now()
+
     pose_data = msg
-    if got_pose:
+    global node_unregistered
+    #print('unregistered? ')
+    #print(node_unregistered)
+    if got_pose and not node_unregistered:
+        #print('unregistering')
+        node_unregistered = True
         pose_sub.unregister()
 
+
+got_pose = False
 #subscribe to pose
 def get_pose():
-    if got_pose is not None and got_pose:
+    global got_pose
+    if got_pose:
         return pose_data
     else:
         got_pose = False
         start_get_pose = rospy.Time.now()
-        pose_sub = rospy.Subscriber('pose', OccupancyGrid, pose_callback)
+        #run rosrun robot_pose_publisher robot_pos_publiser to get topic 
+        global node_unregistered
+        node_unregistered = False
+        global pose_sub
+        pose_sub = rospy.Subscriber('robot_pose', Pose, pose_callback)
         #wait until you get the map or 5 seconds
-        while not got_pose and (rospy.Time.now() > start_get_pose + 5*1000):
-            rospy.spin()
+        while (not got_pose) and (rospy.Time.now() < start_get_pose + rospy.Duration(5)):
+            print('looking for pose')
+            rospy.sleep(1)
         if got_pose:
-            return map_pose
+            print('got pose')
+            print(pose_data)
+            return pose_data
         else:
             print('could not find pose')
-            return Exception
 
 rospy.init_node('explore')
 state_change_time = rospy.Time.now()
@@ -151,7 +177,11 @@ def xy_dist_from_veh(point):
 
     return sqrt(pow(x_dist,2) + pow(y_dist,2))
     
-goal_pub = rospy.Publisher('move_base_simple/goal', PoseStamped, queue_size=10)
+move_goal_ac = actionlib.SimpleActionClient('move_base/goal', MoveBaseGoal)
+move_goal_ac.wait_for_server()
+
+move_result_ac = actionlib.SimpleActionClient('move_base/result', MoveBaseActionResult)
+move_result_ac.wait_for_server()
 
 while not rospy.is_shutdown() and (searchable_frontiers > 0):
 
@@ -160,7 +190,6 @@ while not rospy.is_shutdown() and (searchable_frontiers > 0):
     largest_frontier = []
     current_frontier = 0
     searchable_frontiers = searchable_frontiers.sort(key=len)
-    
     
     #find median location of  of current frontier to get navigation goal
     frontier_to_use = searchable_frontiers[0]
@@ -173,9 +202,24 @@ while not rospy.is_shutdown() and (searchable_frontiers > 0):
     goal_pose.position.x = goal_pose.position.x + goal_diff[0]
     goal_pose.position.y = goal_pose.position.y + goal_diff[1]
 
-    print('looking for map data')
-    print(rospy.Time.now())
-    rate.sleep()
+    goal.target_pose = goal_pose
+    move_goal_ac.send_goal(goal)
+
+    #check if the goal status is appropriate
+    #http://docs.ros.org/fuerte/api/actionlib_msgs/html/msg/GoalStatus.html
+    #3 is good
+    #5 is rejected  
+    #wait for 10 seconds for either 
+    move_base_ac.wait_for_result(rospy.Duration.from_sec(10.0))
+    #print move_base_result
+    print(move_base_ac.get_state())
+    if move_base_ac.get_state() == 3:
+        searchable_frontiers = find_frontiers(map_data)
+        continue
+    if move_base_ac.get_state() == 5:
+        searchable_frontiers.pop(0)
+        continue
+
 
 
 
