@@ -24,12 +24,21 @@ https://github.com/Interbotix/turtlebot2i/wiki/03:-Making-a-map-of-the-environme
 ------------------------------------------------------------------------------------
 
 navigate_to_goal.py in zzc_code package will make the robot move to a predefined position and orientation.
+
 To run navigate_to_goal.py and see the result:
+
 $ catkin_make
+
 $ source ~/turtlebot2i/devel/setup.bash
+
 $ pip install pyquaternion
+
 $ roslaunch turtlebot2i_gazebo turtlebot2i_world2.launch
+
 $ roslaunch zzc_code amcl_demo.launch map_file:=~/turtlebot2i/src/turtlebot2i_gazebo/cafe1.yaml
+
 $ roslaunch turtlebot_rviz_launchers view_navigation.launch --screen
+
 $ sudo chmod +x ~/turtlebot2i/src/zzc_code/navigate_to_goal.py
+
 $ rosrun zzc_code navigate_to_goal.py
