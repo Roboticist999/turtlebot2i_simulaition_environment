@@ -18,7 +18,7 @@ def calculate_goal(target_coordinate):
         target_coordinate.pose.orientation.y,
         target_coordinate.pose.orientation.z
     )
-    #a = my_quaternion.elements
+
     opposite_orientation = target_orientation_quat.conjugate
     individual_elements = opposite_orientation.elements
     obj_to_goal = target_orientation_quat.rotate((0.2, 0, 0)) # Returns a tuple
@@ -32,7 +32,6 @@ def calculate_goal(target_coordinate):
     h = std_msgs.msg.Header()
     h.stamp = rospy.get_rostime()
     h.frame_id = "map"
-    # # h.seq = 2
     goal.header = h
     return goal
     
