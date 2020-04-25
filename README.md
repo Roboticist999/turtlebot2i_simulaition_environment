@@ -9,7 +9,7 @@ sudo apt-get install ros-kinetic-gazebo-ros-pkgs ros-kinetic-gazebo-ros-control
 
 5.1 In order to use this environment, type "roslaunch turtlebot2i_gazebo turtlebot2i_world2.launch" in terminal. In this case you will use the cafe world, if you want to use another world file, modify turtlebot2i_world.launch to use that file
 
-5.2 Run "roslaunch turtlebot2i_bringup rviz.launch" in a new terminal to start Rviz. If the Rviz model is not correctly matching the transforms, change the Rviz global Fixed Frame to be 'odom'.
+5.2 Run "roslaunch turtlebot2i_bringup rviz.launch" in a new terminal to start Rviz
 
 5.3 Run "roslaunch turtlebot2i_bringup rtabmap.launch args:=--delete_db_on_start" in a new terminal to start building a new map. My rtablap.launch still has issues, which is camera image turns red as demonstrated at the end of "v1.2 turtlebot2i simulation environment set up.pdf"
 
@@ -24,13 +24,21 @@ https://github.com/Interbotix/turtlebot2i/wiki/03:-Making-a-map-of-the-environme
 ------------------------------------------------------------------------------------
 
 navigate_to_goal.py in zzc_code package will make the robot move to a predefined position and orientation.
-To run navigate_to_goal.py and see the result:
-$ catkin_make
-$ source ~/turtlebot2i/devel/setup.bash
-$ pip install pyquaternion
-$ roslaunch turtlebot2i_gazebo turtlebot2i_world2.launch
-$ roslaunch zzc_code amcl_demo.launch map_file:=~/turtlebot2i/src/turtlebot2i_gazebo/cafe1.yaml
-$ roslaunch turtlebot_rviz_launchers view_navigation.launch --screen
-$ sudo chmod +x ~/turtlebot2i/src/zzc_code/navigate_to_goal.py
-$ rosrun zzc_code navigate_to_goal.py
 
+To run navigate_to_goal.py and see the result:
+
+$ catkin_make
+
+$ source ~/turtlebot2i/devel/setup.bash
+
+$ pip install pyquaternion
+
+$ roslaunch turtlebot2i_gazebo turtlebot2i_world2.launch
+
+$ roslaunch zzc_code amcl_demo.launch map_file:=~/turtlebot2i/src/turtlebot2i_gazebo/cafe1.yaml
+
+$ roslaunch turtlebot_rviz_launchers view_navigation.launch --screen
+
+$ sudo chmod +x ~/turtlebot2i/src/zzc_code/navigate_to_goal.py
+
+$ rosrun zzc_code navigate_to_goal.py
